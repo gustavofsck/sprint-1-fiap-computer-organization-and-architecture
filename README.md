@@ -43,7 +43,7 @@ No código assembly usamos uma função 'print' para mostrar ao usuário o que e
 	  mov ecx, msg 
 	  call print
 
-  =======================================================
+  
   
 No código em C usamos o printf para realizar a mesma tarefa, como mostram os trechos de código abaixo:
 
