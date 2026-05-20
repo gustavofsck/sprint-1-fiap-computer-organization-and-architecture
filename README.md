@@ -24,9 +24,7 @@
 
 **Trechos de código & Impactos esperados:**
 
-  No código assembly, usamos uma função 'print'
-  para mostrar para o usuario o que esta acontecendo, como mostrado
-  nos trechos de codigo do programa abaixo:
+No código assembly usamos uma função 'print' para mostrar ao usuário o que está acontecendo, como mostrado nos trechos de código abaixo:
 
 
     msg db 'Por favor digite seu ID: ', 0Ah, 0
@@ -47,16 +45,14 @@
 
   =======================================================
   
-  No código em c, usamos o 'printf', para realizar a mesma
-  tarefa, como mostra os trecho de codigo do programa abaixo:
+No código em C usamos o printf para realizar a mesma tarefa, como mostram os trechos de código abaixo:
 
 
     const char* msg = "Por favor digite seu ID: \n";
     printf("%s", msg);
 
 
-  Isolando essa tarefa, e executando-a tanto em assembly, como em c, 10000
-  vezes, usando o 'perfstat' em uma distro Linux, apresenta os seguintes resultados:
+Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em assembly quanto em C, 10.000 vezes com o 'perf stat' em uma distro Linux, obtivemos os seguintes resultados:
   
     *C:*
   
@@ -82,3 +78,5 @@
 
        0.000160483 +- 0.000000111 seconds time elapsed  ( +-  0.07% )
   
+
+Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quando comparado ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais, 112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
