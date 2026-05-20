@@ -79,4 +79,6 @@ Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em ass
        0.000160483 +- 0.000000111 seconds time elapsed  ( +-  0.07% )
   
 
-Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quando comparado ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais, 112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
+Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quando comparado 
+ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais,
+112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
