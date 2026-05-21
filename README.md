@@ -92,7 +92,7 @@ Isso precisa ser feito porque, na maior parte do tempo, os dois programas estão
 espera (sleep), o que significa que a CPU não está executando tarefas dos nossos programas; 
 portanto, esse tempo pode ser descartado.
 
-Com essas alteracoes feitas, executando o programa 10000 vezes nos deu os seguintes resultados:
+Com essas alterações, executar o programa 50.000 vezes nos deu os seguintes resultados:
 
 	C:
 
@@ -119,4 +119,11 @@ Com essas alteracoes feitas, executando o programa 10000 vezes nos deu os seguin
 
        0.000341700 +- 0.000000065 seconds time elapsed  ( +-  0.02% )
 
+Como pode‑se ver, realizar a mesma tarefa em C levou 152.750 ciclos a mais quando comparado ao assembly. O código em C executou 183.477 instruções a mais, 13.538 acessos ao cache a mais,
+157 faltas de cache a mais e 2.302 mispredições de ramo a mais.
+Além disso, levou 0,000044023 segundos a mais por execução do programa.
 
+Portanto, pode‑se concluir que a implementação em assembly foi mais rápida e eficiente
+quando comparada à sua contraparte em C.
+
+**Relação com sustentabilidade e energias renovávei**
