@@ -1,12 +1,14 @@
+
+
 section .data
 
 	charged_msg_1 db '% de bateria -> ', 0
 	charged_msg_1_len equ $ - charged_msg_1
 
 	charged_msg_2 db '% de bateria ', 0
-	charged_msg_2_len equ $ - charged_msg_2
-
-	charging_msg db 'Carregando... ',0
+	charged_msg_2_len equ $ - charged_msg_2 ; 13 chars long excluding null terminator
+	
+	charging_msg db 'carregando... ',0      ; 14 chars long excluding null terminator
 	charging_msg_len equ $ - charging_msg
 
 	stop_msg db 'A recarga do Veiculo terminou com sucesso',0Ah, 0
@@ -34,14 +36,16 @@ section .data
 	valid_id db '1', 0
 
 	max_tries	db  5
-	carriage_ret db 13
+	;carriage_ret db 13
 
 	; equ = basically a #define equivalent i suppose
 	limit_battery      		equ 100
 	limit_temperature      	equ 45
 	limit_current     		equ 32
 
-	
+	carriage_ret			equ 13
+
+	buffer:    times 3 db 0
 
 	timeval:
 	  tv_sec  dd 0
@@ -49,19 +53,16 @@ section .data
 
 section .bss
 
-	; has to be 16 bit cuz we store cx here, otherwise we overwite
-	; adjancent memory
-	counter					resb 2 
-								   
+						   
 
 	previous_battery 		resb 1
 
+
+	charging_msg_buffer		resb 28
 	
 	sensor_battery			resb 1     		
 	sensor_temperature		resb 1      
 	sensor_current			resb 1  		
-	
-	unit	resb 1
 	
 	ustr	resb 2 ; to bytes cuz i want to null terminate it
 
@@ -77,7 +78,7 @@ exit: ; syscall to exit the program with exit status 0
 	
 	ret
 
-; sleeps the program in seoconds
+; sleeps the program
 sleep:
 
 	mov dword [tv_nsec], 0
@@ -159,44 +160,38 @@ check_id:
 
 ; converts numbers to acii and prints them
 convert_to_acii:
-	
-		mov bl, 10 ; <- has to be 10 for this trick to work
 
-		xor ah, ah ; <- clear ah cuz if it has garbage, we get SIGFPE when div bl
-		xor cx, cx ; <- clear cx, because we use it for our counter, so if has garbage it gets messed up
+    mov bl, 10                 ; <- has to be 10 for this trick to work
+    xor ah, ah                 
+    xor cx, cx                 ; <- clear otherwise we blow up
+    
+	loop_push_stack:    
+		div bl    	           ; <- divides ax by bl
+		push ax    			   ; <- push the leftover into the stack
+		inc cx    	           ; <- increment the counter
+		xor ah, ah    	       ; <- clear previous leftover otherwise this will blow up
+		cmp al, 0    	       ; <- compare the result of the division to 0
+		jne loop_push_stack    ; <- if its not zero, continue
 		
-		loop_push_stack:
-
-			div bl     ; <- divide ax by 10
-			
-			push ax    ; <- keep pushing our remainders into the stack (has to be 16 bit reg so we use ax)
-			inc cx 	   ; <- loop counter
-			xor ah, ah ; <- clear the remainder
-
-			;if quotient (result != 0, repeat)
-			cmp al, 0
-			jne loop_push_stack
-
-		; save the result to counter, so we can use it on loop_pop_stack
-		mov [counter], cx
-
-		loop_pop_stack:
+  
+    mov ebx, buffer   		   ; <- load our buffer into ebx
+    mov si, cx                 ; <- save our counte (16-bit) for printing
+    
+	loop_pop_stack:    
+		pop ax    			   ; <- pop our data back from the stack
+		mov dl, ah             ; <- remainder (digit) in AH -> DL    
+		add dl, 48             ; <- convert to ascii    
+		mov [ebx], dl    	   ; <- puts the converted digit into the buffer at the ebx position
+		inc ebx    		       ; <- increment ebx
+		dec cx                 ; <- decrement the loop counter
+		jne loop_pop_stack     ; <- checks the zero flag of the instruction before it, if not equal (to zero), continue
 		
-		    pop ax 		  ; <- use lifo to get our digits (now in reverse order) from the stack
-		    add ah, 48 	  ; <- add 48 to convert to ascii
-		    dec [counter] ; <- decrease the counter
-
-			; prints each digit, now converted to ascii
-			mov edx, 1
-			mov [unit], ah
-			mov  ecx, unit
-			call print
-
-			; cmp our counter to 0, if not equal, repeat the loop util it is
-		    cmp [counter], 0
-		    jne loop_pop_stack ; <- we loop as long as theres stuff to pop from the stack		
-
-		ret
+	; si has the lenght of the buffer
+    movzx edx, si              ; <- (movzx = move zero extended) movzx si into edx (has to be movzx cuz different sized regs)
+    mov ecx, buffer    		   ; <- move our buffer to ecx so we can print it
+    call print
+    
+    ret
 	
 section .text
 
@@ -258,32 +253,38 @@ _start:
 		cmp al, [sensor_current]
 		jb error_current
 
+	
+	mov edi, charging_msg_buffer
+
+	mov esi, charged_msg_2
+	mov ecx, charged_msg_2_len - 1
+	rep movsb
+
+	mov esi, charging_msg
+	mov ecx, charging_msg_len - 1
+	rep movsb
+	
+	; here edi still points to the next free byte into the buffer, so write carriage return into it
+	mov byte [edi], carriage_ret ; < carriage_ret equ 13
+
 	; simulate the station charging the user's vehicle
 	charge:
-	
+
+		; prints the value of the battery as it is being charged
 		xor ax, ax
 		movzx ax, byte [sensor_battery]
 		call convert_to_acii
-		
-		; print some nice message along with the previous print
-		mov edx, charging_msg 
-		mov ecx, charging_msg_len 
-		call print
-		
-		; print some nice message along with the previous print
-		mov edx, charged_msg_2_len 
-		mov ecx, charged_msg_2 
-		call print
 
-		; finally print the final part of our message, the carriage return
-		; so we can have a nice 'animation' of the battery % going up
-		mov edx, 1
-		mov ecx, carriage_ret
+		; prints the rest of the message, making a little charging "animation"
+		mov ecx, charging_msg_buffer
+		mov edx, (charging_msg_len - 1) + (charged_msg_2_len - 1) + 1 ; the -1s are for accounting for the removal of the null terminators, the + 1
+		                                                              ; is to account for the addition of the carriage return char at the end
 		call print
-
+		
 		; "charge" the user's vehicle
 		inc [sensor_battery]
-
+ 
+		; sleeps the thread to simulate the vehicle charging in a more "realistic" way
 		mov dword [tv_sec], 1
 		call sleep
 	
