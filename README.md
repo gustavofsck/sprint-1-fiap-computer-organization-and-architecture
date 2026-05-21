@@ -145,7 +145,7 @@ operação.
 menos acessos a cache e branch-misses reduzem necessidade de processamento
 e refrigeração.
 
-* Vida útil do hardware:
+* Vida útil do hardware prolongada:
 execução mais leve gera menos desgaste e menos substituições, reduzindo
 desperdício eletrônico (E-Waste).
 
