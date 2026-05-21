@@ -2,10 +2,15 @@
 
 **Integrantes:**
 Bruno Riquelme Coutinho Pereira      RM: 569619
+
 Eduardo Bigoli Portela               RM: 569897
+
 Gabriel Martins Cordeiro Rodrigues   RM: 570497
+
 Gustavo Fondato de Souza             RM: 573651
+
 Gustavo Martins Da Silva             RM: 570584
+
 Lucas Lino Marques da Silva          RM: 572863
 
 **Problema:**
