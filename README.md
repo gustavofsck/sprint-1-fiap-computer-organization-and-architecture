@@ -68,7 +68,7 @@ C:
 
 Assembly:
 
-      Performance counter stats for './print_a' (10000 runs):
+       Performance counter stats for './print_a' (10000 runs):
 
              1,826      cycles:u                ( +-  0.12% )
                 12      instructions:u          ( +-  0.01% )
