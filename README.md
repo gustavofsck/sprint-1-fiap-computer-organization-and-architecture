@@ -134,27 +134,27 @@ quando comparada à sua contraparte em C.
 
 **Relação com sustentabilidade e energias renovávei**
 
-	* Menor consumo de energia:
-		código em assembly reduz ciclos e instruções, diminuindo uso de CPU e energia por
-		operação.
+* Menor consumo de energia:
+código em assembly reduz ciclos e instruções, diminuindo uso de CPU e energia por
+operação.
 
-	* Maior eficiência operacional:
-		menos acessos a cache e branch-misses reduzem necessidade de processamento
-		e refrigeração.
+* Maior eficiência operacional:
+menos acessos a cache e branch-misses reduzem necessidade de processamento
+e refrigeração.
 
-	* Vida útil do hardware:
-		execução mais leve gera menos desgaste e menos substituições, reduzindo
-		desperdício eletrônico (E-Waste).
+* Vida útil do hardware:
+execução mais leve gera menos desgaste e menos substituições, reduzindo
+desperdício eletrônico (E-Waste).
 
-	* Compatível com energias renováveis:
-		consumo previsível e baixo facilita integração com fontes intermitentes
-		(solar/ólica) e estratégias de armazenamento/demand response.
+* Compatível com energias renováveis:
+consumo previsível e baixo facilita integração com fontes intermitentes
+(solar/ólica) e estratégias de armazenamento/demand response.
 
-	* Edge computing eficiente:
-		módulos embarcados otimizados reduzem tráfego e processamento
-		na nuvem, poupando energia de data centers.
+* Edge computing eficiente:
+módulos embarcados otimizados reduzem tráfego e processamento
+na nuvem, poupando energia de data centers.
 
-	* Redução de emissões e custos:
-		menor consumo e maior confiabilidade traduzem-se
-		em menor pegada de carbono e custos operacionais.
+* Redução de emissões e custos:
+menor consumo e maior confiabilidade traduzem-se
+em menor pegada de carbono e custos operacionais.
 		
