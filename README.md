@@ -115,7 +115,7 @@ C:
 
 Assembly:
 
- Performance counter stats for './sprint_1'     (50000 runs):
+	Performance counter stats for './sprint_1'   (50000 runs):
 
             46,821      cycles:u                ( +-  0.02% )
              3,260      instructions:u          ( +-  0.00% )
