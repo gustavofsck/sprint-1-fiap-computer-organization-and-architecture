@@ -54,7 +54,7 @@ No código em C usamos o printf para realizar a mesma tarefa, como mostram os tr
 
 Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em assembly quanto em C, 10.000 vezes com o 'perf stat' em uma distro Linux, obtivemos os seguintes resultados:
   
-    C:
+C:
   
       Performance counter stats for './print_c' (10000 runs):
 
@@ -66,7 +66,7 @@ Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em ass
 
        0.000336468 +- 0.000000149 seconds time elapsed  ( +-  0.04% )
 
-    Assembly:
+Assembly:
 
       Performance counter stats for './print_a' (10000 runs):
 
