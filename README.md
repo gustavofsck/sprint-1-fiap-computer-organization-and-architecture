@@ -134,10 +134,12 @@ Além disso, levou 0.000142674 segundos a mais por execução do programa.
 
 com esses dados, é possivel calcular o cpu time (tempo de cpu) que cada programa usa:
 
-C:
+C: 
+
 	cpu time = (187201 * 0.0744473122 * 0.2222222222) = 3097.02473106 (3 mil nano segundos)
 
-Assembly:
+Assembly: 
+
 	cpu time = (3260 * 0.0696268768 * 0.2222222222) = 50.44080408 (50 nano segundos)
 
 
