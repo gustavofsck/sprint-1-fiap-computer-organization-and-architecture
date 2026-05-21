@@ -1,6 +1,12 @@
 # Módulo de controle otimizado em baixo nível (Assembly) para eletropostos
 
-**Integrantes:** Gustavo Martins da Silva **RM:** 570584
+**Integrantes:**
+Bruno Riquelme Coutinho Pereira      RM: 569619
+Eduardo Bigoli Portela               RM: 569897
+Gabriel Martins Cordeiro Rodrigues   RM: 570497
+Gustavo Fondato de Souza             RM: 573651
+Gustavo Martins Da Silva             RM: 570584
+Lucas Lino Marques da Silva          RM: 572863
 
 **Problema:**
   Sistemas de eletropostos frequentemente utilizam software de alto nível e hardware genérico,    o que pode gerar:
