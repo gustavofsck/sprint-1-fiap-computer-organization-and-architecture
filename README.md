@@ -54,7 +54,7 @@ No código em C usamos o printf para realizar a mesma tarefa, como mostram os tr
 
 Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em assembly quanto em C, 10.000 vezes com o 'perf stat' em uma distro Linux, obtivemos os seguintes resultados:
   
-    *C:*
+    C:
   
       Performance counter stats for './print_c' (10000 runs):
 
@@ -66,7 +66,7 @@ Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em ass
 
        0.000336468 +- 0.000000149 seconds time elapsed  ( +-  0.04% )
 
-    *Assembly:*
+    Assembly:
 
       Performance counter stats for './print_a' (10000 runs):
 
@@ -82,3 +82,41 @@ Isolando essa tarefa (imprimir uma mensagem na tela) e executando-a tanto em ass
 Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quando comparado 
 ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais,
 112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
+
+Com base nesses resultados, pode-se esperar uma performance maior do módulo em assembly.
+Porem para realizarmos os testes, precisamos modificar nosso módulo de controle e sua 
+contraparte em C para que não utilizem a syscall 162 (nanosleep) / sleep(),
+a fim de acelerar os testes e obter resultados mais úteis sobre seu desempenho
+
+Isso precisa ser feito porque, na maior parte do tempo, os dois programas estão em estado de
+espera (sleep), o que significa que a CPU não está executando tarefas dos nossos programas; 
+portanto, esse tempo pode ser descartado.
+
+Com essas alteracoes feitas, executando o programa 10000 vezes nos deu os seguintes resultados:
+
+	C:
+
+	Performance counter stats for './sprint_1_c' (50000 runs):
+
+           252,310      cycles:u                ( +-  0.02% )
+           187,201      instructions:u          ( +-  0.00% )
+            13,624      cache-references:u      ( +-  0.01% )
+               160      cache-misses:u          ( +-  0.60% )
+             2,387      branch-misses:u         ( +-  0.02% )
+
+       0.000385723 +- 0.000000075 seconds time elapsed  ( +-  0.02% )
+
+
+	Assembly:
+
+	 Performance counter stats for './sprint_1' (50000 runs):
+
+            99,560      cycles:u                ( +-  0.02% )
+             3,724      instructions:u          ( +-  0.00% )
+                86      cache-references:u      ( +-  0.19% )
+                 3      cache-misses:u          ( +-  1.00% )
+                85      branch-misses:u         ( +-  0.04% )
+
+       0.000341700 +- 0.000000065 seconds time elapsed  ( +-  0.02% )
+
+
