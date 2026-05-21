@@ -22,7 +22,7 @@
 **Arquitetua utilizada:**
   32-bit x86 (IA-32)
 
-**Trechos de código**
+**Trechos de código:**
 
 No código assembly usamos uma função 'print' para mostrar ao usuário o que está acontecendo, como mostrado nos trechos de código abaixo:
 
