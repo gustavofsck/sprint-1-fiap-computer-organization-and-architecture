@@ -115,19 +115,19 @@ Nos deu os seguintes resultados abaixo:
 
 	Assembly:
 
-	 Performance counter stats for './sprint_1' (50000 runs):
+ Performance counter stats for './sprint_1'     (50000 runs):
 
-            99,560      cycles:u                ( +-  0.02% )
-             3,724      instructions:u          ( +-  0.00% )
-                86      cache-references:u      ( +-  0.19% )
-                 3      cache-misses:u          ( +-  1.00% )
-                85      branch-misses:u         ( +-  0.04% )
+            46,821      cycles:u                ( +-  0.02% )
+             3,260      instructions:u          ( +-  0.00% )
+                90      cache-references:u      ( +-  0.15% )
+                 1      cache-misses:u          ( +-  1.84% )
+                32      branch-misses:u         ( +-  0.08% )
 
-       0.000341700 +- 0.000000065 seconds time elapsed  ( +-  0.02% )
+       0.000243049 +- 0.000000056 seconds time elapsed  ( +-  0.02% )
 
-Como pode‑se ver, realizar a mesma tarefa em C levou 152.750 ciclos a mais quando comparado ao assembly. O código em C executou 183.477 instruções a mais, 13.538 acessos ao cache a mais,
-157 faltas de cache a mais e 2.302 mispredições de ramo a mais.
-Além disso, levou 0,000044023 segundos a mais por execução do programa.
+Como pode‑se ver, realizar a mesma tarefa em C levou 205.489 ciclos a mais quando comparado ao assembly. O código em C executou 183.941 instruções a mais, 13.534 acessos ao cache a mais,
+159 misses de cache a mais e 2.355 mispredições de ramo a mais.
+Além disso, levou 0.000142674 segundos a mais por execução do programa.
 
 Portanto, pode‑se concluir que a implementação em assembly foi mais rápida e eficiente
 quando comparada à sua contraparte em C.
