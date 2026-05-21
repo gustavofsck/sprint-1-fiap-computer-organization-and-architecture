@@ -145,7 +145,7 @@ Assembly:
 
 Portanto, pode‑se concluir que a implementação em assembly foi mais eficiente  
 quando comparada à sua contraparte em C, sendo 58.7% mais rápida em termos de velocidade
-de execucao, e 66% mais veloz em cpu time
+de execução, e 2950 nano segundos mais rápida em cpu time
 
 **Relação com sustentabilidade e energias renováveis**
 
