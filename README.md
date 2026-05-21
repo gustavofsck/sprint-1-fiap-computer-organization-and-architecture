@@ -22,7 +22,7 @@
 **Arquitetua utilizada:**
   32-bit x86 (IA-32)
 
-**Trechos de código & Impactos esperados:**
+**Trechos de código**
 
 No código assembly usamos uma função 'print' para mostrar ao usuário o que está acontecendo, como mostrado nos trechos de código abaixo:
 
@@ -82,6 +82,8 @@ Assembly:
 Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quando comparado 
 ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais,
 112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
+
+**Impactos esperados**:
 
 Com base nesses resultados, o impacto esperado seria uma performance maior
 do módulo em assembly.
