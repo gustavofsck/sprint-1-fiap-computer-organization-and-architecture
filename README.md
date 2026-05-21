@@ -132,8 +132,18 @@ Como pode‑se ver, realizar a mesma tarefa em C levou 205.489 ciclos a mais qua
 159 misses de cache a mais e 2.355 mispredições de ramo a mais.
 Além disso, levou 0.000142674 segundos a mais por execução do programa.
 
+com esses dados, é possivel calcular o cpu time (tempo de cpu) que cada programa usa:
+
+C:
+	cpu time = (187201 * 0.0744473122 * 0.2222222222) = 3097.02473106 (3 mil nano segundos)
+
+Assembly:
+	cpu time = (3260 * 0.0696268768 * 0.2222222222) = 50.44080408 (50 nano segundos)
+
+
 Portanto, pode‑se concluir que a implementação em assembly foi mais eficiente  
-quando comparada à sua contraparte em C, sendo 58.7% mais rápida.
+quando comparada à sua contraparte em C, sendo 58.7% mais rápida em termos de velocidade
+de execucao, e 66% mais veloz em cpu time
 
 **Relação com sustentabilidade e energias renováveis**
 
