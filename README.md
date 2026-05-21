@@ -92,7 +92,11 @@ Isso precisa ser feito porque, na maior parte do tempo, os dois programas estão
 espera (sleep), o que significa que a CPU não está executando tarefas dos nossos programas; 
 portanto, esse tempo pode ser descartado.
 
-Com essas alterações, executar o programa 50.000 vezes nos deu os seguintes resultados:
+Com essas alterações, executar o programa 50.000 com o seguinte comando: 
+
+ 	yes 1 | perf stat -r 50000 -e cycles,instructions,cache-references,cache-misses,branch-misses ./PROGRAMA_AQUI
+
+Nos deu os seguintes resultados abaixo:
 
 	C:
 
