@@ -129,8 +129,8 @@ Como pode‑se ver, realizar a mesma tarefa em C levou 205.489 ciclos a mais qua
 159 misses de cache a mais e 2.355 mispredições de ramo a mais.
 Além disso, levou 0.000142674 segundos a mais por execução do programa.
 
-Portanto, pode‑se concluir que a implementação em assembly foi 58.7% mais rápida 
-quando comparada à sua contraparte em C.
+Portanto, pode‑se concluir que a implementação em assembly foi mais eficiente  
+quando comparada à sua contraparte em C, sendo 58.7% mais rápida.
 
 **Relação com sustentabilidade e energias renováveis**
 
