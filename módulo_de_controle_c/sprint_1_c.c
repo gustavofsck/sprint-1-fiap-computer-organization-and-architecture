@@ -100,7 +100,8 @@ int main()
 
 		sleep(1);
 	}
-
+	
+	// prints a message if everything occurred normally
 	printf("%d%s%d%s", previous_battery, charged_msg_1, sensor_battery, charged_msg_2);
 
 	return 0;
