@@ -77,7 +77,7 @@ exit: ; syscall to exit the program with exit status 0
 	
 	ret
 
-; sleeps the program
+; sleeps the program in seoconds
 sleep:
 
 	mov dword [tv_nsec], 0
