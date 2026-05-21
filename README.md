@@ -86,7 +86,7 @@ ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao
 **Impactos esperados**:
 
 Com base nesses resultados, o impacto esperado seria uma performance maior
-do módulo em assembly, portanto, também pode-se esperar uma redução do consumo dos eletropostos e
+do módulo em assembly, logo, também pode-se esperar uma redução do consumo dos eletropostos e
 maior eficiência no uso de energia renovável
 
 Para realizarmos os testes de performance e eficiência, precisamos modificar nosso módulo de controle e sua 
