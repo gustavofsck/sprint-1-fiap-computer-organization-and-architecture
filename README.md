@@ -83,7 +83,9 @@ Como pode-se ver, realizar a mesma tarefa em C levou 197.551 ciclos a mais quand
 ao assembly. O código C executou 115.243 instruções a mais, 12.247 acessos ao cache a mais,
 112 faltas de cache a mais e 2.015 mispredições de ramo a mais.
 
-Com base nesses resultados, pode-se esperar uma performance maior do módulo em assembly.
+Com base nesses resultados, o impacto esperado seria uma performance maior
+do módulo em assembly.
+
 Porem para realizarmos os testes, precisamos modificar nosso módulo de controle e sua 
 contraparte em C para que não utilizem a syscall 162 (nanosleep) / sleep(),
 a fim de acelerar os testes e obter resultados mais úteis sobre seu desempenho
@@ -131,3 +133,28 @@ Portanto, pode‑se concluir que a implementação em assembly foi mais rápida 
 quando comparada à sua contraparte em C.
 
 **Relação com sustentabilidade e energias renovávei**
+
+	* Menor consumo de energia:
+		código em assembly reduz ciclos e instruções, diminuindo uso de CPU e energia por
+		operação.
+
+	* Maior eficiência operacional:
+		menos acessos a cache e branch-misses reduzem necessidade de processamento
+		e refrigeração.
+
+	* Vida útil do hardware:
+		execução mais leve gera menos desgaste e menos substituições, reduzindo
+		desperdício eletrônico (E-Waste).
+
+	* Compatível com energias renováveis:
+		consumo previsível e baixo facilita integração com fontes intermitentes
+		(solar/ólica) e estratégias de armazenamento/demand response.
+
+	* Edge computing eficiente:
+		módulos embarcados otimizados reduzem tráfego e processamento
+		na nuvem, poupando energia de data centers.
+
+	* Redução de emissões e custos:
+		menor consumo e maior confiabilidade traduzem-se
+		em menor pegada de carbono e custos operacionais.
+		
