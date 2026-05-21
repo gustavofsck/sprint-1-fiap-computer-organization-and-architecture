@@ -132,7 +132,7 @@ Além disso, levou 0,000044023 segundos a mais por execução do programa.
 Portanto, pode‑se concluir que a implementação em assembly foi mais rápida e eficiente
 quando comparada à sua contraparte em C.
 
-**Relação com sustentabilidade e energias renovávei**
+**Relação com sustentabilidade e energias renováveis**
 
 * Menor consumo de energia:
 código em assembly reduz ciclos e instruções, diminuindo uso de CPU e energia por
