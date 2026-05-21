@@ -100,7 +100,7 @@ Com essas alterações, executar o programa 50.000 com o seguinte comando:
 
 Nos deu os seguintes resultados abaixo:
 
-	C:
+C:
 
 	Performance counter stats for './sprint_1_c' (50000 runs):
 
@@ -113,7 +113,7 @@ Nos deu os seguintes resultados abaixo:
        0.000385723 +- 0.000000075 seconds time elapsed  ( +-  0.02% )
 
 
-	Assembly:
+Assembly:
 
  Performance counter stats for './sprint_1'     (50000 runs):
 
