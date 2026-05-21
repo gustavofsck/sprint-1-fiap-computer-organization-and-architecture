@@ -1,5 +1,3 @@
-
-
 section .data
 
 	charged_msg_1 db '% de bateria -> ', 0
@@ -39,33 +37,27 @@ section .data
 	;carriage_ret db 13
 
 	; equ = basically a #define equivalent i suppose
+	carriage_ret			equ 13
 	limit_battery      		equ 100
 	limit_temperature      	equ 45
 	limit_current     		equ 32
-
-	carriage_ret			equ 13
-
-	buffer:    times 3 db 0
 
 	timeval:
 	  tv_sec  dd 0
 	  tv_nsec dd 0
 
+	buffer:    times 3 db 0
+
 section .bss
 
-						   
+	charging_msg_buffer		resb 28
 
 	previous_battery 		resb 1
-
-
-	charging_msg_buffer		resb 28
-	
 	sensor_battery			resb 1     		
 	sensor_temperature		resb 1      
 	sensor_current			resb 1  		
 	
 	ustr	resb 2 ; to bytes cuz i want to null terminate it
-
 
 section .text
 
@@ -92,9 +84,9 @@ sleep:
 ; reads from stdin
 read:
 
-	mov eax, 3          ; | <- syscall to read 
-	mov ebx, 0          ; | <- read from stdin
-	int 80h             ; | 
+	mov eax, 3          ; <- syscall to read 
+	mov ebx, 0          ; <- read from stdin
+	int 80h             
 
 	ret
 
@@ -199,7 +191,6 @@ global _start
 
 _start:
 
-
 	; prints a message prompting the user to type in their id 
 	mov edx, msg_len 
 	mov ecx, msg 
@@ -253,7 +244,6 @@ _start:
 		cmp al, [sensor_current]
 		jb error_current
 
-	
 	mov edi, charging_msg_buffer
 
 	mov esi, charged_msg_2
