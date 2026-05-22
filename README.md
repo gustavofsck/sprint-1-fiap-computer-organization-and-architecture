@@ -113,9 +113,6 @@ Vale ressaltar que todos os testes foram realizados com todos os núcleos da CPU
 
 	sudo cpupower frequency-set -g performance
 
-A CPU (Intel(R) Core(TM) i5-10600K), neste ambiente, teve uma média de 40 W de consumo.
-
-
 Com essas alterações, executar o programa 50.000 com o seguinte comando: 
 
  	yes 1 | perf stat -r 50000 -e cycles,instructions,cache-references,cache-misses,branch-misses ./PROGRAMA_AQUI
