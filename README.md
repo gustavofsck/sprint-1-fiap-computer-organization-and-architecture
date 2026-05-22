@@ -109,6 +109,12 @@ Isso precisa ser feito porque, na maior parte do tempo, os dois programas estão
 espera (sleep), o que significa que a CPU não está executando tarefas dos nossos programas; 
 portanto, esse tempo pode ser descartado.
 
+Vale ressaltar que todos esses testes foram realizados com todos os núcleos da CPU no modo "performance".
+	sudo cpupower frequency-set -g performance
+
+A CPU, neste ambiente, teve uma média de 40 W de consumo.
+
+
 Com essas alterações, executar o programa 50.000 com o seguinte comando: 
 
  	yes 1 | perf stat -r 50000 -e cycles,instructions,cache-references,cache-misses,branch-misses ./PROGRAMA_AQUI
@@ -143,6 +149,9 @@ Assembly:
 Como pode‑se ver, realizar a mesma tarefa em C levou 205.489 ciclos a mais quando comparado ao assembly. O código em C executou 183.941 instruções a mais, 13.534 acessos ao cache a mais,
 159 misses de cache a mais e 2.355 mispredições de ramo a mais.
 Além disso, levou 0.000142674 segundos a mais por execução do programa.
+
+
+
 
 com esses dados, é possivel calcular o cpu time (tempo de cpu) que cada programa usa:
 
