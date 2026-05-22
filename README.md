@@ -151,7 +151,7 @@ Além disso, levou 0.000142674 segundos a mais por execução do programa.
 
 
 
-Com esses dados — a frequência da CPU utilizada (4,5 GHz) e seu consumo médio durante os testes (40 W),
+Com os dados apresentados, e a frequência da CPU utilizada (4,5 GHz), e seu consumo médio durante os testes (40 W),
 é possivel calcular o cpu time (tempo de cpu) que cada programa usa:
 
 C: 
