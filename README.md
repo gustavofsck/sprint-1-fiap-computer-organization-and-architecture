@@ -109,7 +109,7 @@ Isso precisa ser feito porque, na maior parte do tempo, os dois programas estão
 espera (sleep), o que significa que a CPU não está executando tarefas dos nossos programas; 
 portanto, esse tempo pode ser descartado.
 
-Vale ressaltar que todos os testes foram realizados com todos os núcleos da CPU no modo "performance".
+Vale ressaltar que todos os testes foram realizados com todos os núcleos da CPU no modo "performance":
 	sudo cpupower frequency-set -g performance
 
 A CPU, neste ambiente, teve uma média de 40 W de consumo.
